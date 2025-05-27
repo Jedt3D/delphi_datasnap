@@ -3,15 +3,15 @@
 {
   Unit ServerConst1
   
-  Description:
-  This unit contains constants and resource strings used throughout the DataSnap server application.
-  It centralizes messages and command strings for the console interface.
+  คำอธิบาย:
+  ยูนิตนี้ประกอบด้วยค่าคงที่และสตริงทรัพยากรที่ใช้ทั่วทั้งแอปพลิเคชัน DataSnap เซิร์ฟเวอร์
+  มันรวมศูนย์ข้อความและสตริงคำสั่งสำหรับอินเทอร์เฟซคอนโซล
 }
 
 interface
 
 {
-  Resource strings used for console output messages
+  สตริงทรัพยากรที่ใช้สำหรับข้อความเอาท์พุทคอนโซล
 }
 resourcestring
   sPortInUse = '- Error: Port %s already in use';
@@ -35,7 +35,7 @@ resourcestring
     '   - "exit" to close the application';
 
 {
-  Constants used for command processing
+  ค่าคงที่ที่ใช้สำหรับการประมวลผลคำสั่ง
 }
 const
   cArrow = '->';
