@@ -662,10 +662,54 @@ function TServerMethods1(connectionInfo)
   this.ReverseString_URL = function(Value) {
     return this.executor.getMethodURL("ReverseString", "GET", [Value], arguments[1])[0];
   };
+
+  /*
+   * @param Value [in] - Type on server: string
+   * @return result - Type on server: string
+   */
+  this.ToUpperCase = function(Value) {
+    var returnObject = this.executor.executeMethod("ToUpperCase", "GET", [Value], arguments[1], true, arguments[2], arguments[3]);
+    if (arguments[1] == null) {
+      if (returnObject != null && returnObject.result != null && isArray(returnObject.result)) {
+        var resultArray = returnObject.result;
+        var resultObject = new Object();
+        resultObject.Value = Value;
+        resultObject.result = resultArray[0];
+        return resultObject;
+      }
+      return returnObject;
+    }
+  };
+
+  this.ToUpperCase_URL = function(Value) {
+    return this.executor.getMethodURL("ToUpperCase", "GET", [Value], arguments[1])[0];
+  };
+
+  /*
+   * @param Value [in] - Type on server: string
+   * @return result - Type on server: string
+   */
+  this.ToLowerCase = function(Value) {
+    var returnObject = this.executor.executeMethod("ToLowerCase", "GET", [Value], arguments[1], true, arguments[2], arguments[3]);
+    if (arguments[1] == null) {
+      if (returnObject != null && returnObject.result != null && isArray(returnObject.result)) {
+        var resultArray = returnObject.result;
+        var resultObject = new Object();
+        resultObject.Value = Value;
+        resultObject.result = resultArray[0];
+        return resultObject;
+      }
+      return returnObject;
+    }
+  };
+
+  this.ToLowerCase_URL = function(Value) {
+    return this.executor.getMethodURL("ToLowerCase", "GET", [Value], arguments[1])[0];
+  };
 }
 
 var JSProxyClassList = {
   "DSAdmin": ["GetPlatformName","ClearResources","FindPackages","FindClasses","FindMethods","CreateServerClasses","DropServerClasses","CreateServerMethods","DropServerMethods","GetServerClasses","ListClasses","DescribeClass","ListMethods","DescribeMethod","GetServerMethods","GetServerMethodParameters","GetDatabaseConnectionProperties","GetDSServerName","ConsumeClientChannel","ConsumeClientChannelTimeout","CloseClientChannel","RegisterClientCallbackServer","UnregisterClientCallback","BroadcastToChannel","BroadcastObjectToChannel","NotifyCallback","NotifyObject"],
-  "TServerMethods1": ["EchoString","ReverseString"]
+  "TServerMethods1": ["EchoString","ReverseString","ToUpperCase","ToLowerCase"]
 };
 

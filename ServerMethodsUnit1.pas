@@ -14,6 +14,8 @@ type
     { Public declarations }
     function EchoString(Value: string): string;
     function ReverseString(Value: string): string;
+    function ToUpperCase(Value: string): string;
+    function ToLowerCase(Value: string): string;
   end;
 
 implementation
@@ -33,6 +35,16 @@ end;
 function TServerMethods1.ReverseString(Value: string): string;
 begin
   Result := System.StrUtils.ReverseString(Value);
+end;
+
+function TServerMethods1.ToUpperCase(Value: string): string;
+begin
+  Result := System.SysUtils.UpperCase(Value);
+end;
+
+function TServerMethods1.ToLowerCase(Value: string): string;
+begin
+  Result := System.SysUtils.LowerCase(Value);
 end;
 
 end.
