@@ -1,4 +1,12 @@
 ﻿program DelphiDS;
+{
+  DelphiDS - Delphi DataSnap Server Application
+  
+  This is the main project file for the DataSnap server application.
+  It implements a console application that hosts a DataSnap server,
+  allowing remote clients to call server methods via HTTP.
+}
+
 {$APPTYPE CONSOLE}
 
 {$R *.dres}
@@ -19,12 +27,25 @@ uses
 
 {$R *.res}
 
+{
+  TerminateThreads
+  
+  Terminates all DataSnap sessions before shutting down the server.
+}
 procedure TerminateThreads;
 begin
   if TDSSessionManager.Instance <> nil then
     TDSSessionManager.Instance.TerminateAllSessions;
 end;
 
+{
+  BindPort
+  
+  Attempts to bind to a specified port to check if it's available.
+  
+  @param APort - The port number to test
+  @return Boolean - True if the port is available, False otherwise
+}
 function BindPort(APort: Integer): Boolean;
 var
   LTestServer: IIPTestServer;
@@ -38,6 +59,14 @@ begin
   end;
 end;
 
+{
+  CheckPort
+  
+  Checks if a port is available for use.
+  
+  @param APort - The port number to check
+  @return Integer - Returns APort if available, or 0 if unavailable
+}
 function CheckPort(APort: Integer): Integer;
 begin
   if BindPort(APort) then
@@ -46,6 +75,14 @@ begin
     Result := 0;
 end;
 
+{
+  SetPort
+  
+  Changes the server's listening port if the server is not currently active.
+  
+  @param AServer - The HTTP server instance
+  @param APort - The port number string to set
+}
 procedure SetPort(const AServer: TIdHTTPWebBrokerBridge; APort: String);
 begin
   if not AServer.Active then
@@ -64,6 +101,13 @@ begin
   Write(cArrow);
 end;
 
+{
+  StartServer
+  
+  Attempts to start the server on the specified port.
+  
+  @param AServer - The HTTP server instance to start
+}
 procedure StartServer(const AServer: TIdHTTPWebBrokerBridge);
 begin
   if not AServer.Active then
@@ -82,6 +126,13 @@ begin
   Write(cArrow);
 end;
 
+{
+  StopServer
+  
+  Stops the running server and terminates all sessions.
+  
+  @param AServer - The HTTP server instance to stop
+}
 procedure StopServer(const AServer: TIdHTTPWebBrokerBridge);
 begin
   if AServer.Active then
@@ -97,12 +148,24 @@ begin
   Write(cArrow);
 end;
 
+{
+  WriteCommands
+  
+  Displays a list of available commands in the console.
+}
 procedure WriteCommands;
 begin
   Writeln(sCommands);
   Write(cArrow);
 end;
 
+{
+  WriteStatus
+  
+  Displays the current status of the HTTP server.
+  
+  @param AServer - The HTTP server instance
+}
 procedure WriteStatus(const AServer: TIdHTTPWebBrokerBridge);
 begin
   Writeln(sIndyVersion + AServer.SessionList.Version);
@@ -112,6 +175,14 @@ begin
   Write(cArrow);
 end;
 
+{
+  RunServer
+  
+  Main server function that initializes the HTTP server and handles console commands.
+  This function enters a command loop until the user exits.
+  
+  @param APort - The initial port to use for the server
+}
 procedure RunServer(APort: Integer);
 var
   LServer: TIdHTTPWebBrokerBridge;
@@ -155,6 +226,10 @@ begin
   end;
 end;
 
+{ 
+  Main program entry point 
+  Initialize the web module and run the server on port 8989
+}
 begin
   try
   if WebRequestHandler <> nil then
