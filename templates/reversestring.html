@@ -109,6 +109,30 @@ function onReverseStringClick()
   valueField.value = s.result;
 }
 
+function onToUpperCaseClick()
+{
+  if (loginRequired && (AdminInst == null))
+  {
+    showLogin(true);
+    return;
+  }
+  var valueField = document.getElementById('valueField');
+  var s = serverMethods().ToUpperCase(valueField.value);
+  valueField.value = s.result;
+}
+
+function onToLowerCaseClick()
+{
+  if (loginRequired && (AdminInst == null))
+  {
+    showLogin(true);
+    return;
+  }
+  var valueField = document.getElementById('valueField');
+  var s = serverMethods().ToLowerCase(valueField.value);
+  valueField.value = s.result;
+}
+
 </script>
 </head>
 <body onload="onLoad()">
@@ -137,6 +161,8 @@ function onReverseStringClick()
         <tr>
           <td><input id="valueField" class="loginField" type="text" value="A B C" /></td>
           <td><button onclick='javascript:onReverseStringClick();'>Reverse String</button></td>
+          <td><button onclick='javascript:onToUpperCaseClick();'>Upper Case</button></td>
+          <td><button onclick='javascript:onToLowerCaseClick();'>Lower Case</button></td>
         </tr>
       </table>
     </div>
