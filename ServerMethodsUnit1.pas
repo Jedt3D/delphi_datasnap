@@ -3,9 +3,9 @@
 { 
   Unit ServerMethodsUnit1
   
-  Description:
-  This unit contains the server methods that are exposed via DataSnap server.
-  It provides simple string manipulation methods that can be called remotely.
+  คำอธิบาย:
+  ยูนิตนี้ประกอบด้วยเมธอดของเซิร์ฟเวอร์ที่เปิดเผยผ่าน DataSnap server
+  มันให้บริการเมธอดจัดการกับข้อความอย่างง่ายที่สามารถเรียกใช้จากระยะไกลได้
 }
 
 interface
@@ -17,36 +17,36 @@ uses System.SysUtils, System.Classes, System.Json,
 type
   { TServerMethods1
     
-    This class defines the server methods available for remote calls.
-    It inherits from TDSServerModule which makes its public methods
-    available for remote access via DataSnap.
+    คลาสนี้กำหนดเมธอดของเซิร์ฟเวอร์ที่พร้อมให้บริการสำหรับการเรียกจากระยะไกล
+    สืบทอดจาก TDSServerModule ซึ่งทำให้เมธอดสาธารณะของมัน
+    พร้อมให้บริการสำหรับการเข้าถึงจากระยะไกลผ่าน DataSnap
   }
   TServerMethods1 = class(TDSServerModule)
   private
     { Private declarations }
   public
     { Public declarations }
-    { EchoString - Returns the input string unchanged
-      @param Value - The string to be echoed
-      @return - The input string unchanged
+    { EchoString - ส่งคืนข้อความเข้ามาโดยไม่มีการเปลี่ยนแปลง
+      @param Value - ข้อความที่จะถูกส่งกลับ
+      @return - ข้อความเข้ามาที่ไม่มีการเปลี่ยนแปลง
     }
     function EchoString(Value: string): string;
     
-    { ReverseString - Reverses the characters of the input string
-      @param Value - The string to be reversed
-      @return - The reversed string
+    { ReverseString - สลับลำดับตัวอักษรของข้อความที่เข้ามา
+      @param Value - ข้อความที่จะถูกสลับลำดับ
+      @return - ข้อความที่ถูกสลับลำดับแล้ว
     }
     function ReverseString(Value: string): string;
     
-    { ToUpperCase - Converts the input string to uppercase
-      @param Value - The string to be converted to uppercase
-      @return - The uppercase version of the input string
+    { ToUpperCase - แปลงข้อความที่เข้ามาเป็นตัวพิมพ์ใหญ่
+      @param Value - ข้อความที่จะถูกแปลงเป็นตัวพิมพ์ใหญ่
+      @return - ข้อความที่เป็นตัวพิมพ์ใหญ่
     }
     function ToUpperCase(Value: string): string;
     
-    { ToLowerCase - Converts the input string to lowercase
-      @param Value - The string to be converted to lowercase
-      @return - The lowercase version of the input string
+    { ToLowerCase - แปลงข้อความที่เข้ามาเป็นตัวพิมพ์เล็ก
+      @param Value - ข้อความที่จะถูกแปลงเป็นตัวพิมพ์เล็ก
+      @return - ข้อความที่เป็นตัวพิมพ์เล็ก
     }
     function ToLowerCase(Value: string): string;
   end;
@@ -62,8 +62,8 @@ uses System.StrUtils;
 
 { TServerMethods1.EchoString
   
-  Simply returns the input string without any changes.
-  This function demonstrates the basic functionality of a server method.
+  เพียงส่งคืนข้อความเข้ามาโดยไม่มีการเปลี่ยนแปลง
+  ฟังก์ชันนี้แสดงให้เห็นถึงการทำงานพื้นฐานของเมธอดเซิร์ฟเวอร์
 }
 function TServerMethods1.EchoString(Value: string): string;
 begin
@@ -72,8 +72,8 @@ end;
 
 { TServerMethods1.ReverseString
 
-  Reverses the order of characters in the input string.
-  Uses System.StrUtils.ReverseString to perform the operation.
+  สลับลำดับตัวอักษรในข้อความที่เข้ามา
+  ใช้ System.StrUtils.ReverseString เพื่อดำเนินการ
 }
 function TServerMethods1.ReverseString(Value: string): string;
 begin
@@ -82,8 +82,8 @@ end;
 
 { TServerMethods1.ToUpperCase
 
-  Converts all characters in the input string to uppercase.
-  Uses System.SysUtils.UpperCase to perform the conversion.
+  แปลงตัวอักษรทั้งหมดในข้อความที่เข้ามาเป็นตัวพิมพ์ใหญ่
+  ใช้ System.SysUtils.UpperCase เพื่อดำเนินการแปลง
 }
 function TServerMethods1.ToUpperCase(Value: string): string;
 begin
@@ -92,8 +92,8 @@ end;
 
 { TServerMethods1.ToLowerCase
 
-  Converts all characters in the input string to lowercase.
-  Uses System.SysUtils.LowerCase to perform the conversion.
+  แปลงตัวอักษรทั้งหมดในข้อความที่เข้ามาเป็นตัวพิมพ์เล็ก
+  ใช้ System.SysUtils.LowerCase เพื่อดำเนินการแปลง
 }
 function TServerMethods1.ToLowerCase(Value: string): string;
 begin

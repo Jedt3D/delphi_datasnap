@@ -1,10 +1,10 @@
 ﻿program DelphiDS;
 {
-  DelphiDS - Delphi DataSnap Server Application
+  DelphiDS - แอปพลิเคชัน Delphi DataSnap Server
   
-  This is the main project file for the DataSnap server application.
-  It implements a console application that hosts a DataSnap server,
-  allowing remote clients to call server methods via HTTP.
+  นี่เป็นไฟล์โปรเจ็กต์หลักสำหรับแอปพลิเคชัน DataSnap server
+  เป็นแอปพลิเคชันคอนโซลที่โฮสต์ DataSnap server
+  ซึ่งอนุญาตให้ไคลเอนต์ระยะไกลเรียกใช้เมธอดของเซิร์ฟเวอร์ผ่าน HTTP
 }
 
 {$APPTYPE CONSOLE}
@@ -30,7 +30,7 @@ uses
 {
   TerminateThreads
   
-  Terminates all DataSnap sessions before shutting down the server.
+  ยุติทุกเซสชัน DataSnap ก่อนปิดเซิร์ฟเวอร์
 }
 procedure TerminateThreads;
 begin
@@ -41,10 +41,10 @@ end;
 {
   BindPort
   
-  Attempts to bind to a specified port to check if it's available.
+  พยายามผูกกับพอร์ตที่ระบุเพื่อตรวจสอบว่าพร้อมใช้งานหรือไม่
   
-  @param APort - The port number to test
-  @return Boolean - True if the port is available, False otherwise
+  @param APort - หมายเลขพอร์ตที่ต้องการทดสอบ
+  @return Boolean - คืนค่า True ถ้าพอร์ตพร้อมใช้งาน, False ถ้าไม่พร้อม
 }
 function BindPort(APort: Integer): Boolean;
 var
@@ -62,10 +62,10 @@ end;
 {
   CheckPort
   
-  Checks if a port is available for use.
+  ตรวจสอบว่าพอร์ตพร้อมใช้งานหรือไม่
   
-  @param APort - The port number to check
-  @return Integer - Returns APort if available, or 0 if unavailable
+  @param APort - หมายเลขพอร์ตที่ต้องการตรวจสอบ
+  @return Integer - คืนค่า APort ถ้าพร้อมใช้งาน หรือ 0 ถ้าไม่พร้อม
 }
 function CheckPort(APort: Integer): Integer;
 begin
@@ -78,10 +78,10 @@ end;
 {
   SetPort
   
-  Changes the server's listening port if the server is not currently active.
+  เปลี่ยนพอร์ตที่เซิร์ฟเวอร์รับฟังหากเซิร์ฟเวอร์ยังไม่ถูกเปิดใช้งาน
   
-  @param AServer - The HTTP server instance
-  @param APort - The port number string to set
+  @param AServer - อินสแตนซ์ของเซิร์ฟเวอร์ HTTP
+  @param APort - สตริงตัวเลขพอร์ตที่ต้องการกำหนด
 }
 procedure SetPort(const AServer: TIdHTTPWebBrokerBridge; APort: String);
 begin
@@ -104,9 +104,9 @@ end;
 {
   StartServer
   
-  Attempts to start the server on the specified port.
+  พยายามเริ่มเซิร์ฟเวอร์บนพอร์ตที่ระบุ
   
-  @param AServer - The HTTP server instance to start
+  @param AServer - อินสแตนซ์ของเซิร์ฟเวอร์ HTTP ที่ต้องการเริ่มทำงาน
 }
 procedure StartServer(const AServer: TIdHTTPWebBrokerBridge);
 begin
@@ -129,9 +129,9 @@ end;
 {
   StopServer
   
-  Stops the running server and terminates all sessions.
+  หยุดเซิร์ฟเวอร์ที่กำลังทำงานอยู่และยุติเซสชันทั้งหมด
   
-  @param AServer - The HTTP server instance to stop
+  @param AServer - อินสแตนซ์ของเซิร์ฟเวอร์ HTTP ที่ต้องการหยุด
 }
 procedure StopServer(const AServer: TIdHTTPWebBrokerBridge);
 begin
@@ -151,7 +151,7 @@ end;
 {
   WriteCommands
   
-  Displays a list of available commands in the console.
+  แสดงรายการคำสั่งที่ใช้ได้ในคอนโซล
 }
 procedure WriteCommands;
 begin
@@ -162,9 +162,9 @@ end;
 {
   WriteStatus
   
-  Displays the current status of the HTTP server.
+  แสดงสถานะปัจจุบันของเซิร์ฟเวอร์ HTTP
   
-  @param AServer - The HTTP server instance
+  @param AServer - อินสแตนซ์ของเซิร์ฟเวอร์ HTTP
 }
 procedure WriteStatus(const AServer: TIdHTTPWebBrokerBridge);
 begin
@@ -178,10 +178,10 @@ end;
 {
   RunServer
   
-  Main server function that initializes the HTTP server and handles console commands.
-  This function enters a command loop until the user exits.
+  ฟังก์ชันหลักของเซิร์ฟเวอร์ที่เริ่มต้นเซิร์ฟเวอร์ HTTP และจัดการคำสั่งคอนโซล
+  ฟังก์ชันนี้จะเข้าสู่ลูปคำสั่งจนกว่าผู้ใช้จะออกจากโปรแกรม
   
-  @param APort - The initial port to use for the server
+  @param APort - พอร์ตเริ่มต้นที่จะใช้สำหรับเซิร์ฟเวอร์
 }
 procedure RunServer(APort: Integer);
 var
@@ -227,8 +227,8 @@ begin
 end;
 
 { 
-  Main program entry point 
-  Initialize the web module and run the server on port 8989
+  จุดเข้าสู่โปรแกรมหลัก 
+  เริ่มต้น web module และเรียกใช้เซิร์ฟเวอร์บนพอร์ต 8989
 }
 begin
   try

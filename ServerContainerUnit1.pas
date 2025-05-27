@@ -3,9 +3,9 @@
 {
   Unit ServerContainerUnit1
   
-  Description:
-  This unit implements the container for the DataSnap server components.
-  It manages the DataSnap server lifecycle and class registration.
+  คำอธิบาย:
+  ยูนิตนี้ทำหน้าที่เป็นคอนเทนเนอร์สำหรับคอมโพเนนต์ของ DataSnap server
+  มีหน้าที่จัดการวงจรชีวิตของ DataSnap server และการลงทะเบียนคลาส
 }
 
 interface
@@ -18,8 +18,8 @@ type
   {
     TServerContainer1
     
-    Data module that serves as a container for the DataSnap server components.
-    Manages server class registration and provides access to the server instance.
+    โมดูลข้อมูลที่ทำหน้าที่เป็นคอนเทนเนอร์สำหรับคอมโพเนนต์ DataSnap server
+    จัดการการลงทะเบียนคลาสของเซิร์ฟเวอร์และให้การเข้าถึงอินสแตนซ์ของเซิร์ฟเวอร์
   }
   TServerContainer1 = class(TDataModule)
     DSServer1: TDSServer;
@@ -36,8 +36,8 @@ type
 {
   DSServer
   
-  Global function to access the DataSnap server instance.
-  @return TDSServer - The DataSnap server instance
+  ฟังก์ชันส่วนกลางสำหรับเข้าถึงอินสแตนซ์ของ DataSnap server
+  @return TDSServer - อินสแตนซ์ของ DataSnap server
 }
 function DSServer: TDSServer;
 
@@ -57,8 +57,8 @@ var
 {
   DSServer
   
-  Global function implementation to access the DataSnap server instance.
-  @return TDSServer - The DataSnap server instance
+  การทำงานของฟังก์ชันส่วนกลางสำหรับเข้าถึงอินสแตนซ์ของ DataSnap server
+  @return TDSServer - อินสแตนซ์ของ DataSnap server
 }
 function DSServer: TDSServer;
 begin
@@ -68,10 +68,10 @@ end;
 {
   TServerContainer1.Create
   
-  Constructor for the server container.
-  Initializes the DataSnap server global reference.
+  คอนสตรัคเตอร์สำหรับคอนเทนเนอร์ของเซิร์ฟเวอร์
+  เริ่มต้นการอ้างอิงส่วนกลางของ DataSnap server
   
-  @param AOwner - The component that owns this container
+  @param AOwner - คอมโพเนนต์ที่เป็นเจ้าของคอนเทนเนอร์นี้
 }
 constructor TServerContainer1.Create(AOwner: TComponent);
 begin
@@ -82,8 +82,8 @@ end;
 {
   TServerContainer1.Destroy
   
-  Destructor for the server container.
-  Cleans up the DataSnap server global reference.
+  ดีสตรัคเตอร์สำหรับคอนเทนเนอร์ของเซิร์ฟเวอร์
+  ล้างการอ้างอิงส่วนกลางของ DataSnap server
 }
 destructor TServerContainer1.Destroy;
 begin
@@ -94,11 +94,11 @@ end;
 {
   TServerContainer1.DSServerClass1GetClass
   
-  Event handler that provides the class to be used for server method calls.
-  Registers the TServerMethods1 class as the server class.
+  ตัวจัดการเหตุการณ์ที่จัดหาคลาสที่จะใช้สำหรับการเรียกเมธอดของเซิร์ฟเวอร์
+  ลงทะเบียนคลาส TServerMethods1 เป็นคลาสของเซิร์ฟเวอร์
   
-  @param DSServerClass - The server class requesting the persistent class
-  @param PersistentClass - The class to be used for server methods
+  @param DSServerClass - คลาสของเซิร์ฟเวอร์ที่ต้องการคลาสแบบ persistent
+  @param PersistentClass - คลาสที่จะใช้สำหรับเมธอดของเซิร์ฟเวอร์
 }
 procedure TServerContainer1.DSServerClass1GetClass(
   DSServerClass: TDSServerClass; var PersistentClass: TPersistentClass);

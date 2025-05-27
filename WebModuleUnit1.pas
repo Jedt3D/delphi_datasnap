@@ -3,9 +3,9 @@
 {
   Unit WebModuleUnit1
   
-  Description:
-  This unit implements the web module that handles HTTP requests to the DataSnap server.
-  It provides the web interface for the server functions and manages dispatching of requests.
+  คำอธิบาย:
+  ยูนิตนี้ทำหน้าที่เป็นโมดูลเว็บที่จัดการคำขอ HTTP ไปยัง DataSnap server
+  มันจัดเตรียมอินเตอร์เฟซเว็บสำหรับฟังก์ชันของเซิร์ฟเวอร์และจัดการการส่งคำขอต่าง ๆ
 }
 
 interface
@@ -23,8 +23,8 @@ type
   {
     TWebModule1
     
-    Web module class that handles HTTP requests and manages DataSnap server integration.
-    Processes incoming web requests and dispatches them to appropriate handlers.
+    คลาสโมดูลเว็บที่จัดการคำขอ HTTP และจัดการการบูรณาการกับ DataSnap server
+    ประมวลผลคำขอเว็บที่เข้ามาและกระจายพวกมันไปยังตัวจัดการที่เหมาะสม
   }
   TWebModule1 = class(TWebModule)
     DSHTTPWebDispatcher1: TDSHTTPWebDispatcher;
@@ -48,9 +48,9 @@ type
     FServerFunctionInvokerAction: TWebActionItem;
     
     { AllowServerFunctionInvoker
-      Determines if the server function invoker is accessible based on the client's IP address.
-      Only allows access from localhost (127.0.0.1 or ::1).
-      @return Boolean - True if access is allowed, False otherwise
+      กำหนดว่า server function invoker สามารถเข้าถึงได้จากที่อยู่ IP ของไคลเอนต์หรือไม่
+      อนุญาตเฉพาะการเข้าถึงจาก localhost (127.0.0.1 หรือ ::1) เท่านั้น
+      @return Boolean - True ถ้าการเข้าถึงได้รับอนุญาต, False ถ้าไม่ได้รับอนุญาต
     }
     function AllowServerFunctionInvoker: Boolean;
   public
@@ -71,15 +71,15 @@ uses ServerMethodsUnit1, ServerContainerUnit1, Web.WebReq;
 {
   ServerFunctionInvokerHTMLTag
   
-  Processes HTML tags in the ServerFunctionInvoker template and replaces them
-  with dynamic content. This is used to inject server information and configuration
-  into the HTML page.
+  ประมวลผลแท็ก HTML ในเทมเพลต ServerFunctionInvoker และแทนที่พวกมัน
+  ด้วยเนื้อหาแบบไดนามิก นี่ถูกใช้เพื่อแทรกข้อมูลและการตั้งค่าของเซิร์ฟเวอร์
+  ลงในหน้า HTML
   
-  @param Sender - The component that triggered the event
-  @param Tag - The tag being processed
-  @param TagString - The string representation of the tag
-  @param TagParams - Parameters associated with the tag
-  @param ReplaceText - The text to replace the tag with
+  @param Sender - คอมโพเนนต์ที่กระตุ้นเหตุการณ์
+  @param Tag - แท็กที่กำลังประมวลผล
+  @param TagString - ข้อความของแท็ก
+  @param TagParams - พารามิเตอร์ที่เกี่ยวข้องกับแท็ก
+  @param ReplaceText - ข้อความที่จะแทนที่แท็ก
 }
 procedure TWebModule1.ServerFunctionInvokerHTMLTag(Sender: TObject; Tag: TTag;
   const TagString: string; TagParams: TStrings; var ReplaceText: string);
@@ -113,13 +113,13 @@ end;
 {
   WebModuleDefaultAction
   
-  Default action handler for the web module. 
-  Serves the main page or redirects to it if the root path is not specified.
+  ตัวจัดการการกระทำเริ่มต้นสำหรับโมดูลเว็บ
+  แสดงหน้าหลักหรือเปลี่ยนเส้นทางไปยังหน้าหลักถ้าไม่ได้ระบุเส้นทางหลัก
   
-  @param Sender - The component that triggered the event
-  @param Request - The HTTP request object
-  @param Response - The HTTP response object
-  @param Handled - Boolean flag indicating if the request has been handled
+  @param Sender - คอมโพเนนต์ที่กระตุ้นเหตุการณ์
+  @param Request - ออบเจ็กต์คำขอ HTTP
+  @param Response - ออบเจ็กต์การตอบสนอง HTTP
+  @param Handled - ตัวแปรบูลีนที่ระบุว่าคำขอถูกจัดการแล้วหรือไม่
 }
 procedure TWebModule1.WebModuleDefaultAction(Sender: TObject;
   Request: TWebRequest; Response: TWebResponse; var Handled: Boolean);
@@ -133,13 +133,13 @@ end;
 {
   WebModuleBeforeDispatch
   
-  Executes before the dispatcher processes a request.
-  Controls access to server function invoker based on client IP.
+  ทำงานก่อนที่ตัวส่งคำขอจะประมวลผลคำขอ
+  ควบคุมการเข้าถึง server function invoker จากที่อยู่ IP ของไคลเอนต์
   
-  @param Sender - The component that triggered the event
-  @param Request - The HTTP request object
-  @param Response - The HTTP response object
-  @param Handled - Boolean flag indicating if the request has been handled
+  @param Sender - คอมโพเนนต์ที่กระตุ้นเหตุการณ์
+  @param Request - ออบเจ็กต์คำขอ HTTP
+  @param Response - ออบเจ็กต์การตอบสนอง HTTP
+  @param Handled - ตัวแปรบูลีนที่ระบุว่าคำขอถูกจัดการแล้วหรือไม่
 }
 procedure TWebModule1.WebModuleBeforeDispatch(Sender: TObject;
   Request: TWebRequest; Response: TWebResponse; var Handled: Boolean);
@@ -151,10 +151,10 @@ end;
 {
   AllowServerFunctionInvoker
   
-  Determines if the current request should be allowed access to the server function invoker.
-  Only allows access from localhost addresses (127.0.0.1, ::1).
+  กำหนดว่าคำขอปัจจุบันควรได้รับอนุญาตให้เข้าถึง server function invoker หรือไม่
+  อนุญาตเฉพาะการเข้าถึงจากที่อยู่ localhost (127.0.0.1, ::1) เท่านั้น
   
-  @return Boolean - True if access should be granted, False otherwise
+  @return Boolean - True ถ้าการเข้าถึงควรได้รับอนุญาต, False ถ้าไม่ควรอนุญาต
 }
 function TWebModule1.AllowServerFunctionInvoker: Boolean;
 begin
@@ -165,14 +165,14 @@ end;
 {
   WebFileDispatcher1BeforeDispatch
   
-  Executes before the web file dispatcher processes a file request.
-  Handles special case for serverfunctions.js, generating it dynamically if needed.
+  ทำงานก่อนที่ตัวส่งไฟล์เว็บจะประมวลผลคำขอไฟล์
+  จัดการกรณีพิเศษสำหรับ serverfunctions.js โดยสร้างมันแบบไดนามิกถ้าจำเป็น
   
-  @param Sender - The component that triggered the event
-  @param AFileName - The name of the requested file
-  @param Request - The HTTP request object
-  @param Response - The HTTP response object
-  @param Handled - Boolean flag indicating if the request has been handled
+  @param Sender - คอมโพเนนต์ที่กระตุ้นเหตุการณ์
+  @param AFileName - ชื่อของไฟล์ที่ถูกร้องขอ
+  @param Request - ออบเจ็กต์คำขอ HTTP
+  @param Response - ออบเจ็กต์การตอบสนอง HTTP
+  @param Handled - ตัวแปรบูลีนที่ระบุว่าคำขอถูกจัดการแล้วหรือไม่
 }
 procedure TWebModule1.WebFileDispatcher1BeforeDispatch(Sender: TObject;
   const AFileName: string; Request: TWebRequest; Response: TWebResponse;
@@ -193,10 +193,10 @@ end;
 {
   WebModuleCreate
   
-  Initializes the web module when it is created.
-  Sets up the DataSnap server components and starts the HTTP dispatcher.
+  เริ่มต้นโมดูลเว็บเมื่อถูกสร้างขึ้น
+  ตั้งค่าคอมโพเนนต์ DataSnap server และเริ่ม HTTP dispatcher
   
-  @param Sender - The component that triggered the event
+  @param Sender - คอมโพเนนต์ที่กระตุ้นเหตุการณ์
 }
 procedure TWebModule1.WebModuleCreate(Sender: TObject);
 begin
