@@ -1,28 +1,28 @@
 /* 
- * Copyright (c) 2006, Opera Software ASA 
- * All rights reserved. 
- * Redistribution and use in source and binary forms, with or without 
- * modification, are permitted provided that the following conditions are met: 
+ * ลิขสิทธิ์ (c) 2006, Opera Software ASA 
+ * สงวนลิขสิทธิ์ทั้งหมด 
+ * การเผยแพร่และการใช้งานในรูปแบบซอร์สโค้ดและไบนารี ทั้งที่มีและไม่มี
+ * การแก้ไข ได้รับอนุญาตเมื่อปฏิบัติตามเงื่อนไขต่อไปนี้: 
  * 
- *     * Redistributions of source code must retain the above copyright 
- *       notice, this list of conditions and the following disclaimer. 
- *     * Redistributions in binary form must reproduce the above copyright 
- *       notice, this list of conditions and the following disclaimer in the 
- *       documentation and/or other materials provided with the distribution. 
- *     * Neither the name of Opera Software ASA nor the 
- *       names of its contributors may be used to endorse or promote products 
- *       derived from this software without specific prior written permission. 
+ *     * การเผยแพร่ซอร์สโค้ดต้องคงไว้ซึ่งข้อความลิขสิทธิ์ข้างต้น
+ *       ประกาศนี้ รายการเงื่อนไข และข้อสงวนสิทธิ์ต่อไปนี้
+ *     * การเผยแพร่ในรูปแบบไบนารีต้องทำซ้ำข้อความลิขสิทธิ์ข้างต้น
+ *       ประกาศนี้ รายการเงื่อนไข และข้อสงวนสิทธิ์ต่อไปนี้
+ *       ในเอกสารและ/หรือวัสดุอื่น ๆ ที่มาพร้อมกับการเผยแพร่
+ *     * ห้ามใช้ชื่อ Opera Software ASA หรือ
+ *       ชื่อของผู้มีส่วนร่วมเพื่อรับรองหรือส่งเสริมผลิตภัณฑ์
+ *       ที่ได้มาจากซอฟต์แวร์นี้โดยไม่ได้รับอนุญาตเป็นลายลักษณ์อักษรล่วงหน้า
  * 
- * THIS SOFTWARE IS PROVIDED BY OPERA SOFTWARE ASA AND CONTRIBUTORS ``AS IS'' AND ANY 
- * EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED 
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE 
- * DISCLAIMED. IN NO EVENT SHALL OPERA SOFTWARE ASA AND CONTRIBUTORS BE LIABLE FOR ANY 
- * DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES 
- * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; 
- * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND 
- * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT 
- * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS 
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
+ * ซอฟต์แวร์นี้จัดเตรียมโดย OPERA SOFTWARE ASA และผู้มีส่วนร่วม "ตามที่เป็น" และไม่มี 
+ * การรับประกันที่ชัดแจ้งหรือโดยนัย รวมถึง แต่ไม่จำกัดเพียง การรับประกันโดยนัย 
+ * ในเรื่องความสามารถในการซื้อขายได้ หรือความเหมาะสมสำหรับวัตถุประสงค์เฉพาะ ซึ่ง 
+ * ปฏิเสธความรับผิดชอบ ไม่มีกรณีใด ๆ ที่ OPERA SOFTWARE ASA และผู้มีส่วนร่วมจะรับผิดต่อความเสียหาย 
+ * โดยตรง โดยอ้อม อุบัติเหตุ พิเศษ ตัวอย่าง หรือความเสียหายที่ตามมา 
+ * (รวมถึง แต่ไม่จำกัดเพียง การจัดหาสินค้าหรือบริการทดแทน; 
+ * การสูญเสียการใช้งาน ข้อมูล หรือกำไร; หรือการหยุดชะงักทางธุรกิจ) ไม่ว่าจะมีสาเหตุและ 
+ * ตามทฤษฎีความรับผิดใด ๆ ไม่ว่าจะเป็นสัญญา ความรับผิดชอบโดยเคร่งครัด หรือการละเมิด 
+ * (รวมถึงความประมาทหรืออื่น ๆ) ที่เกิดขึ้นในทางใด ๆ จากการใช้งาน
+ * ซอฟต์แวร์นี้ แม้ว่าจะได้รับการแจ้งถึงความเป็นไปได้ของความเสียหายดังกล่าว
  */ 
 function convertStringToBase64(string) 
 { 

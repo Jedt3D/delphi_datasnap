@@ -1,87 +1,87 @@
-# Delphi DataSnap Server Project
+# โปรเจกต์เซิร์ฟเวอร์ Delphi DataSnap
 
-## Project Overview
+## ภาพรวมโปรเจกต์
 
-This project implements a DataSnap server application using Delphi. It provides a simple HTTP server that exposes various string manipulation methods through a RESTful API. The application runs as a console application, allowing users to control the server through command-line commands.
+โปรเจกต์นี้จัดทำแอปพลิเคชันเซิร์ฟเวอร์ DataSnap โดยใช้ Delphi มันจัดเตรียมเซิร์ฟเวอร์ HTTP อย่างง่ายที่เปิดเผยเมธอดการจัดการสตริงต่างๆ ผ่าน RESTful API แอปพลิเคชันทำงานเป็นแอปพลิเคชันคอนโซล อนุญาตให้ผู้ใช้ควบคุมเซิร์ฟเวอร์ผ่านคำสั่งบรรทัดคำสั่ง
 
-## Key Components
+## คอมโพเนนต์หลัก
 
-### Main Program (DelphiDS.dpr)
+### โปรแกรมหลัก (DelphiDS.dpr)
 
-The main program file that initializes and runs the DataSnap server. It provides a console interface to:
-- Start and stop the server
-- Change the server port
-- Display server status
-- Handle commands through a command-line interface
+ไฟล์โปรแกรมหลักที่เริ่มต้นและรันเซิร์ฟเวอร์ DataSnap มันจัดเตรียมอินเทอร์เฟซคอนโซลสำหรับ:
+- เริ่มและหยุดเซิร์ฟเวอร์
+- เปลี่ยนพอร์ตเซิร์ฟเวอร์
+- แสดงสถานะเซิร์ฟเวอร์
+- จัดการคำสั่งผ่านอินเทอร์เฟซบรรทัดคำสั่ง
 
-### Server Modules
+### โมดูลเซิร์ฟเวอร์
 
 1. **ServerMethodsUnit1.pas**
-   - Contains the main server methods that can be called remotely
-   - Implements simple string manipulation methods:
-     - `EchoString`: Returns the input string unchanged
-     - `ReverseString`: Reverses the input string
-     - `ToUpperCase`: Converts the input string to uppercase
-     - `ToLowerCase`: Converts the input string to lowercase
+   - ประกอบด้วยเมธอดของเซิร์ฟเวอร์หลักที่สามารถเรียกใช้จากระยะไกล
+   - จัดทำเมธอดการจัดการสตริงอย่างง่าย:
+     - `EchoString`: ส่งคืนสตริงที่ป้อนเข้าโดยไม่มีการเปลี่ยนแปลง
+     - `ReverseString`: กลับด้านสตริงที่ป้อนเข้ามา
+     - `ToUpperCase`: แปลงสตริงที่ป้อนเข้ามาเป็นตัวพิมพ์ใหญ่
+     - `ToLowerCase`: แปลงสตริงที่ป้อนเข้ามาเป็นตัวพิมพ์เล็ก
 
 2. **ServerContainerUnit1.pas**
-   - Manages the DataSnap server components
-   - Creates and maintains the server instance
-   - Registers server classes
+   - จัดการคอมโพเนนต์เซิร์ฟเวอร์ DataSnap
+   - สร้างและรักษาอินสแตนซ์เซิร์ฟเวอร์
+   - ลงทะเบียนคลาสเซิร์ฟเวอร์
 
 3. **WebModuleUnit1.pas**
-   - Handles HTTP requests to the server
-   - Manages the web interface for the server functions
-   - Controls access to server function invoker (restricted to localhost)
-   - Generates JavaScript proxy files for client-side interaction
+   - จัดการคำขอ HTTP ไปยังเซิร์ฟเวอร์
+   - จัดการอินเทอร์เฟซเว็บสำหรับฟังก์ชันเซิร์ฟเวอร์
+   - ควบคุมการเข้าถึงตัวเรียกฟังก์ชันเซิร์ฟเวอร์ (จำกัดเฉพาะ localhost)
+   - สร้างไฟล์พร็อกซี JavaScript สำหรับการโต้ตอบฝั่งไคลเอนต์
 
 4. **ServerConst1.pas**
-   - Contains constants and resource strings used throughout the application
-   - Centralizes user messages and command strings
+   - ประกอบด้วยค่าคงที่และสตริงทรัพยากรที่ใช้ทั่วทั้งแอปพลิเคชัน
+   - รวมศูนย์ข้อความผู้ใช้และสตริงคำสั่ง
 
-## Client-Side Components
+## คอมโพเนนต์ฝั่งไคลเอนต์
 
-The server automatically generates JavaScript proxy files that clients can use to call the server methods:
+เซิร์ฟเวอร์สร้างไฟล์พร็อกซี JavaScript โดยอัตโนมัติที่ไคลเอนต์สามารถใช้เพื่อเรียกเมธอดของเซิร์ฟเวอร์:
 
-- `js/serverfunctions.js`: Contains proxies for server methods
-- `js/serverfunctioninvoker.js`: Provides a user interface to test server methods
-- `js/json2.js`: Handles JSON serialization/deserialization
+- `js/serverfunctions.js`: ประกอบด้วยพร็อกซีสำหรับเมธอดของเซิร์ฟเวอร์
+- `js/serverfunctioninvoker.js`: จัดเตรียมอินเทอร์เฟซผู้ใช้สำหรับทดสอบเมธอดเซิร์ฟเวอร์
+- `js/json2.js`: จัดการการแปลงข้อมูล JSON
 
-## How to Use
+## วิธีการใช้งาน
 
-1. **Start the Server**:
-   - Run the DelphiDS executable
-   - Type `start` at the prompt to start the server (default port 8989)
+1. **เริ่มเซิร์ฟเวอร์**:
+   - รันไฟล์ปฏิบัติการ DelphiDS
+   - พิมพ์ `start` ที่พรอมต์เพื่อเริ่มเซิร์ฟเวอร์ (พอร์ตเริ่มต้น 8989)
 
-2. **Manage the Server**:
-   - `stop`: Stops the server
-   - `status`: Shows current server status
-   - `set port [number]`: Changes the server port
-   - `help`: Displays available commands
-   - `exit`: Exits the application
+2. **จัดการเซิร์ฟเวอร์**:
+   - `stop`: หยุดเซิร์ฟเวอร์
+   - `status`: แสดงสถานะปัจจุบันของเซิร์ฟเวอร์
+   - `set port [number]`: เปลี่ยนพอร์ตเซิร์ฟเวอร์
+   - `help`: แสดงคำสั่งที่มี
+   - `exit`: ออกจากแอปพลิเคชัน
 
-3. **Access Server Functions**:
-   - From a web browser on the local machine, visit: `http://localhost:8989/`
-   - Click on the "Server Functions" link to access the function invoker interface
-   - The server functions can also be called via HTTP requests using the appropriate URL patterns
+3. **เข้าถึงฟังก์ชันเซิร์ฟเวอร์**:
+   - จากเว็บเบราว์เซอร์บนเครื่องท้องถิ่น เยี่ยมชม: `http://localhost:8989/`
+   - คลิกที่ลิงก์ "Server Functions" เพื่อเข้าถึงอินเทอร์เฟซตัวเรียกฟังก์ชัน
+   - ฟังก์ชันเซิร์ฟเวอร์สามารถเรียกใช้ผ่านคำขอ HTTP โดยใช้รูปแบบ URL ที่เหมาะสมได้ด้วย
 
-## Development Notes
+## บันทึกการพัฒนา
 
-- The server only allows the server function invoker to be accessed from localhost (127.0.0.1 or ::1) for security reasons
-- The project uses Indy components for HTTP communication
-- DataSnap automatically handles serialization/deserialization of parameters and results
-- When the server application is updated, the JavaScript proxy files are automatically regenerated
+- เซิร์ฟเวอร์อนุญาตให้เข้าถึงตัวเรียกฟังก์ชันเซิร์ฟเวอร์จากโลคัลโฮสต์ (127.0.0.1 หรือ ::1) เท่านั้น เพื่อเหตุผลด้านความปลอดภัย
+- โปรเจกต์ใช้คอมโพเนนต์ Indy สำหรับการสื่อสาร HTTP
+- DataSnap จัดการการแปลงพารามิเตอร์และผลลัพธ์โดยอัตโนมัติ
+- เมื่อแอปพลิเคชันเซิร์ฟเวอร์ได้รับการอัปเดต ไฟล์พร็อกซี JavaScript จะถูกสร้างขึ้นใหม่โดยอัตโนมัติ
 
-## Extending the Project
+## การขยายโปรเจกต์
 
-To add new server methods:
+ในการเพิ่มเมธอดเซิร์ฟเวอร์ใหม่:
 
-1. Add new method declarations to `TServerMethods1` in `ServerMethodsUnit1.pas`
-2. Implement the methods in the implementation section
-3. Restart the server to make the new methods available
+1. เพิ่มประกาศเมธอดใหม่ไปยัง `TServerMethods1` ใน `ServerMethodsUnit1.pas`
+2. ใส่การทำงานของเมธอดในส่วนการทำงาน (implementation section)
+3. รีสตาร์ทเซิร์ฟเวอร์เพื่อทำให้เมธอดใหม่พร้อมใช้งาน
 
-## Security Considerations
+## ข้อควรพิจารณาด้านความปลอดภัย
 
-- The server function invoker is only accessible from localhost
-- Consider implementing authentication for production use
-- Review access control settings before deploying to a production environment
+- ตัวเรียกฟังก์ชันเซิร์ฟเวอร์สามารถเข้าถึงได้จากโลคัลโฮสต์เท่านั้น
+- พิจารณาการนำการยืนยันตัวตนไปใช้สำหรับการใช้งานในระบบการผลิต
+- ตรวจสอบการตั้งค่าการควบคุมการเข้าถึงก่อนที่จะปรับใช้ในสภาพแวดล้อมการผลิต
